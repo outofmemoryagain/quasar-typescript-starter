@@ -1,17 +1,18 @@
-import Vue from 'vue'
-import VueRouter, { RouterMode } from 'vue-router'
+import Vue from 'vue';
+import VueRouter, { RouterMode } from 'vue-router';
 
-import routes from './routes'
+import routes from './routes';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-console.log("router loaded...")
+// tslint:disable-next-line:no-console
+console.log('router loaded...');
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation
  */
 
-export default function (/* { store, ssrContext } */) {
+export default function(/* { store, ssrContext } */) {
   const Router = new VueRouter({
     scrollBehavior: () => ({ y: 0, x: 0 }),
     routes,
@@ -20,8 +21,8 @@ export default function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     mode: process.env.VUE_ROUTER_MODE as RouterMode,
-    base: process.env.VUE_ROUTER_BASE
-  })
+    base: process.env.VUE_ROUTER_BASE,
+  });
 
-  return Router
+  return Router;
 }

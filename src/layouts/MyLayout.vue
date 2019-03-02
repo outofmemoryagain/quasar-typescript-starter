@@ -82,19 +82,18 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { openURL } from 'quasar'
-export default Vue.extend({
-  name: 'MyLayout',
-  data () {
-    return {
-      leftDrawerOpen: this.$q.platform.is.desktop
-    }
-  },
-  methods: {
-    openURL
+import Vue from 'vue';
+import { openURL } from 'quasar';
+import Component from 'vue-class-component';
+
+@Component
+export default class MyLayout extends Vue {
+  public leftDrawerOpen: boolean = this.$q.platform.is.desktop;
+
+  public openURL(url: string) {
+    openURL(url);
   }
-})
+}
 </script>
 
 <style>

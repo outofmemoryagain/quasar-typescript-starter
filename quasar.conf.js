@@ -1,16 +1,22 @@
 // Configuration for your app
-
-function extendTypescriptToWebpack(cfg) {
-  // added the type-script supports
-  cfg.resolve.extensions.push('.ts')
-  cfg.module.rules.push({
-    test: /\.ts$/,
-    loader: 'ts-loader',
-    options: { appendTsSuffixTo: [/\.vue$/] }
-  })
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const extendTypescriptToWebpack = (config) => {
+  config.resolve
+    .extensions
+      .add('.ts')
+      .add('.tsx')
+  config.module
+    .rule('typescript')
+      .test(/\.tsx?$/)
+      .use('typescript')
+        .loader('ts-loader')
+        .options({
+          appendTsSuffixTo: [/\.vue$/],
+          transpileOnly: true
+        })
+  //TSLin option: Remove tslint: true to remove tslint
+  config.plugin('ts-checker').use(ForkTsCheckerWebpackPlugin, [{tslint: true, vue: true}])
 }
-
-
 
 module.exports = function(ctx) {
   return {
@@ -80,7 +86,9 @@ module.exports = function(ctx) {
       // analyze: true,
       // extractCSS: false,
       extendWebpack(cfg) {
-        extendTypescriptToWebpack(cfg);
+      },
+      chainWebpack (cfg) {
+        extendTypescriptToWebpack(cfg)
       }
     },
 

@@ -8,8 +8,11 @@
 </style>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  name: 'PageIndex'
-})
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Index extends Vue {
+  public name: string = 'PageIndex';
+}
 </script>

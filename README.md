@@ -37,3 +37,6 @@ TSLint has long been the default choice when it comes to linting TS projects, bu
 Currently TSLint is [not supported by Vetur](https://github.com/vuejs/vetur/issues/170).  There is limited support added by [vscode-tslint-vue](https://github.com/prograhammer/vscode-tslint-vue) but it is not complete and provides an inconsistent experience for the developer.  Current options for supporting integration of linting with VS Code is:
 1. Don't include TS script section in single file .Vue component.  Instead add a reference in the script tag to an external .ts file that contains the component class.
 2. Use ESLint instead.
+```
+<script lang="ts" src="./MyComponent.ts" />
+```

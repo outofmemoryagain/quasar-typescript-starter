@@ -10,7 +10,7 @@
 	(*) Vue-i18n
 	(*) IE11 support
 2. Use class-style component syntax? (Y/n) Y
-3. 	Pick a linter / formatter:
+3. Pick a linter / formatter:
 	> ESLint + Standard (https://github.com/standard/standard)
 	  ESLint + Airbnb (https://github.com/airbnb/javascript)
 	  ESLint + Prettier (https://github.com/prettier/prettier)
